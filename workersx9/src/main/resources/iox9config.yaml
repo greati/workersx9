@@ -66,7 +66,7 @@ views:
     -
         id: entrance_panel
         class: "pso.secondphase.workersx9.view.PanelIn"
-        notifiable: false
+        notifiable: true
         processors_of_interest:
             - entrance_camera
             

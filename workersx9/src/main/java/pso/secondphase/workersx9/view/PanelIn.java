@@ -6,9 +6,11 @@
 package pso.secondphase.workersx9.view;
 
 import java.util.Date;
+import pso.secondphase.iox9.business.notification.NotifierChainSingleton;
 import pso.secondphase.iox9.business.processing.Observer;
 import pso.secondphase.iox9.model.Entity;
 import pso.secondphase.iox9.model.IORecord;
+import pso.secondphase.iox9.model.Notification;
 import pso.secondphase.workersx9.processing.WorkerInProcessor;
 
 /**
@@ -23,4 +25,11 @@ public class PanelIn extends Observer{
         System.out.println("CPF: "+ e.getIdentifier());
         //System.out.println("Data Nascimento: "+ e.getAttrs().get("data").value);
     }
+    
+    public void update(NotifierChainSingleton processor, Object o) {
+        Notification n = (Notification) o;
+        System.out.println(n.getMessage());
+    }
+    
+    
 }

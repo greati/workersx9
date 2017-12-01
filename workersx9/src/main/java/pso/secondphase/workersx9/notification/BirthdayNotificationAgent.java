@@ -6,6 +6,7 @@
 package pso.secondphase.workersx9.notification;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import pso.secondphase.iox9.business.notification.NotificationAgent;
 import pso.secondphase.iox9.business.processing.EntityProcessor;
@@ -30,10 +31,10 @@ public class BirthdayNotificationAgent extends NotificationAgent{
         Attribute<?> attrData = ior.getEntity().getAttrs().get("data");
         if (attrData != null) {
             Date data = (Date)attrData.value;
-
-            LocalDate ld = LocalDate.ofEpochDay(data.getTime());
+            
+            LocalDate ld = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate now = LocalDate.now();
-            if(ld.getDayOfMonth() == now.getDayOfMonth() && ld.getDayOfWeek() == now.getDayOfWeek()){
+            if(ld.getDayOfMonth()== now.getDayOfMonth() && ld.getMonthValue()== now.getMonthValue()){
                 return true;
             }
         }
