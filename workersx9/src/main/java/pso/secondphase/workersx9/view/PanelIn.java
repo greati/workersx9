@@ -19,8 +19,8 @@ public class PanelIn extends Observer{
     public void update(WorkerInProcessor observable, Object o){
         Entity e = ((IORecord)o).getEntity();
         System.out.println("ENTROU");
-        System.out.println("Nome: " + e.getAttrs().get("nome").value);
-        System.out.println("CPF: "+ e.getAttrs().get("cpf").value);
-        System.out.println("Data Nascimento: "+ e.getAttrs().get("data").value);
+        //System.out.println("Nome: " + e.getAttrs().get("nome").value);
+        System.out.println("CPF: "+ e.getIdentifier());
+        //System.out.println("Data Nascimento: "+ e.getAttrs().get("data").value);
     }
 }

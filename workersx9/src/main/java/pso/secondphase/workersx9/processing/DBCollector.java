@@ -30,13 +30,7 @@ public class DBCollector implements InformationCollector{
     private BufferedReader reader;
     
     public DBCollector() {
-        try {
-            Path currentRelativePath = Paths.get("");
-            String path = currentRelativePath.toAbsolutePath().toString();
-            reader = new BufferedReader(new FileReader(path + "/src/main/resources/database.txt"));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(DBCollector.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
     
     @Override
@@ -58,16 +52,27 @@ public class DBCollector implements InformationCollector{
     
     public String[] getByCPF(String cpf) throws IOException{
         
-        String line = reader.readLine();
-        while(line != null){
-            
-            String[] splitLine = line.split(",", -1);
-            if(splitLine[0].equals(cpf)){
-                return splitLine;
+        try {
+            Path currentRelativePath = Paths.get("");
+            String path = currentRelativePath.toAbsolutePath().toString();
+            reader = new BufferedReader(new FileReader(path + "/src/main/resources/database.txt"));
+        
+            String line = reader.readLine();
+            while(line != null){
+
+                String[] splitLine = line.split(",", -1);
+                if(splitLine[0].equals(cpf)){
+                    reader.close();
+                    return splitLine;
+                }
+                line = reader.readLine();
             }
-            line = reader.readLine();
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DBCollector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+
     }
     
 }

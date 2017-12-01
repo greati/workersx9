@@ -14,6 +14,12 @@
 capacity: 30 
 almost_full: 25
 
+# Database configuration
+database:
+    url: "jdbc:postgresql://localhost:5432/workerx9db"
+    username: "workerx9"
+    password: "123"
+
 # Important concrete classes
 entity_dao_class: "pso.secondphase.iox9.dao.JDBCEntityDAO"
 iorecord_dao_class: "pso.secondphase.iox9.dao.JDBCIORecordDAO"

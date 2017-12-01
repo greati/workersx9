@@ -25,9 +25,9 @@ public class EverybodyArrivedNotification extends NotificationAgent{
 
     @Override
     protected boolean test(IORecord ior, EntityProcessor ep) {
-        Object maxCapacity = ApplicationConfiguration.getInstance().getParameters().get("capacity");
+        Integer maxCapacity = (Integer) ApplicationConfiguration.getInstance().getParameters().get("capacity");
         Long current = ApplicationConfiguration.getInstance().getEntityCount();
-        return Objects.equals((Long)maxCapacity, current);
+        return Objects.equals(maxCapacity.longValue(), current);
     }
 
     @Override

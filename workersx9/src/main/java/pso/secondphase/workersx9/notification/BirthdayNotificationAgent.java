@@ -28,12 +28,14 @@ public class BirthdayNotificationAgent extends NotificationAgent{
     @Override
     protected boolean test(IORecord ior, EntityProcessor ep) {
         Attribute<?> attrData = ior.getEntity().getAttrs().get("data");
-        Date data = (Date)attrData.value;
-        
-        LocalDate ld = LocalDate.ofEpochDay(data.getTime());
-        LocalDate now = LocalDate.now();
-        if(ld.getDayOfMonth() == now.getDayOfMonth() && ld.getDayOfWeek() == now.getDayOfWeek()){
-            return true;
+        if (attrData != null) {
+            Date data = (Date)attrData.value;
+
+            LocalDate ld = LocalDate.ofEpochDay(data.getTime());
+            LocalDate now = LocalDate.now();
+            if(ld.getDayOfMonth() == now.getDayOfMonth() && ld.getDayOfWeek() == now.getDayOfWeek()){
+                return true;
+            }
         }
         return false;
     }

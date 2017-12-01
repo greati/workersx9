@@ -20,8 +20,8 @@ public class PanelOut extends Observer{
     public void update(WorkerOutProcessor observable, Object o){
         Entity e = ((IORecord)o).getEntity();
         System.out.println("SAIU");
-        System.out.println("Nome: " + e.getAttrs().get("nome").value);
-        System.out.println("CPF: "+ e.getAttrs().get("cpf").value);
-        System.out.println("Data Nascimento: "+ e.getAttrs().get("data").value);
+        //System.out.println("Nome: " + e.getAttrs().get("nome").value);
+        System.out.println("CPF: "+ e.getIdentifier());
+        //System.out.println("Data Nascimento: "+ e.getAttrs().get("data").value);
     }
 }
