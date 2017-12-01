@@ -1,0 +1,73 @@
+####### iox9 config file #############################
+# Use this file to configure the framework. 
+# Essentially:                    
+# 
+# - Define general preferences.
+# - Register your data sources (cameras, for example).
+# - Register your statistical processors.
+# - Register your views and tell them how to interact
+#   with sources and statistical processors.
+# - Register your notification agents.
+######################################################
+
+# General preferences
+capacity: 30 
+almost_full: 25
+
+# Important concrete classes
+entity_dao_class: "pso.secondphase.iox9.dao.JDBCEntityDAO"
+iorecord_dao_class: "pso.secondphase.iox9.dao.JDBCIORecordDAO"
+model_factory_class: "pso.secondphase.iox9.model.GeneralModelFactory"
+
+# Collector configuration
+collector:
+    class: "pso.secondphase.workersx9.processing.DBCollector"
+    sleep_time: 500
+
+sources:
+    - 
+        id: entrance_camera
+        source_class: "pso.secondphase.workersx9.processing.InDataSourceSavedImage"
+        processor_class: "pso.secondphase.workersx9.processing.WorkerInProcessor"
+        recognizer_class: "pso.secondphase.workersx9.processing.QRCodeRecognizer"
+        io_type: 0
+        active: true
+        sleep_time: 1000
+    -
+        id: exit_camera
+        source_class: "pso.secondphase.workersx9.processing.OutDataSourceSavedImage"
+        processor_class: "pso.secondphase.workersx9.processing.WorkerOutProcessor"
+        recognizer_class: "pso.secondphase.workersx9.processing.QRCodeRecognizer"
+        io_type: 1
+        active: true
+        sleep_time: 5000
+        
+# Statistics processors registration
+statictics_processors:
+    -
+        id: count_by_hours_in_day
+        class: "pso.secondphase.iox9.business.statistics.CountByHoursInDayStatistics"
+    
+notification_agents:
+    -
+        id: birthday_notification
+        class: "pso.secondphase.workersx9.notification.BirthdayNotificationAgent"
+    -
+        id: everybody_in_notification
+        class: "pso.secondphase.workersx9.notification.EverybodyArrivedNotification"
+        
+views:
+    -
+        id: entrance_panel
+        class: "pso.secondphase.workersx9.view.PanelIn"
+        notifiable: false
+        processors_of_interest:
+            - entrance_camera
+            
+    -
+        id: exit_panel
+        class: "pso.secondphase.workersx9.view.PanelOut"
+        notifiable: false
+        processors_of_interest:
+            - exit_camera
+            

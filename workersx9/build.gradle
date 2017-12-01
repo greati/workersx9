@@ -11,7 +11,7 @@ sourceCompatibility = '1.8'
 // prefer. In this case NetBeans will not add these tasks but you may rely on
 // your own implementation.
 if (!hasProperty('mainClass')) {
-    ext.mainClass = ''
+    ext.mainClass = 'pso.secondphase.iox9.configuration.IOx9Start'
 }
 
 repositories {
@@ -28,5 +28,24 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.10'
     compile group: 'com.google.zxing', name: 'core', version: '2.2'
     compile group: 'com.google.zxing', name: 'javase', version: '2.2'
+        // https://mvnrepository.com/artifact/org.yaml/snakeyaml
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.8'
+    // https://mvnrepository.com/artifact/com.github.sarxos/webcam-capture
+    compile group: 'com.github.sarxos', name: 'webcam-capture', version: '0.3.4'
+    // https://mvnrepository.com/artifact/com.github.sarxos/webcam-capture-driver-ipcam
+    compile group: 'com.github.sarxos', name: 'webcam-capture-driver-ipcam', version: '0.3.11'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
+    testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+    // https://mvnrepository.com/artifact/eu.hansolo/Medusa
+    compile group: 'eu.hansolo', name: 'Medusa', version: '4.8'
+    // compile jar files
     compile fileTree(dir: 'jar', include: ['*.jar'])
+    // https://mvnrepository.com/artifact/org.openpnp/opencv
+    compile group: 'org.openpnp', name: 'opencv', version: '3.2.0-1'
+    // https://mvnrepository.com/artifact/postgresql/postgresql
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+    // https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient
+    compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
 }

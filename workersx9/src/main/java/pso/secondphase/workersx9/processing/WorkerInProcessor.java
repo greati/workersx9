@@ -51,12 +51,13 @@ public class WorkerInProcessor extends EntityProcessor<Image>{
     protected void populateSpecificValues(Image idt, Entity entity) {
         if(entity.getIdentifier() != null){
             Entity newEntity = entityDAO.getByIdentifier(entity.getIdentifier());
-            entity.setAttrs(newEntity.getAttrs());
+            if (newEntity != null)
+                entity.setAttrs(newEntity.getAttrs());
         }
         if(idt != null){
             entity.getAttrs().put("image", new Attribute<>(idt, "image", false));
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

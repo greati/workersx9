@@ -29,7 +29,7 @@ public class InMemoryWorkerDatabase {
         Path currentRelativePath = Paths.get("");
         String path = currentRelativePath.toAbsolutePath().toString();
         
-        //Populate outside cars
+        //Populate outside workers
         for(int i = 0; i < 50; ++i)
             outsideWorkers.add(path + "/src/main/resources/img/"+i+".png");
 

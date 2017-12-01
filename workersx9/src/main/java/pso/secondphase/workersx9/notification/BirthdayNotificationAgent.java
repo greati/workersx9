@@ -40,7 +40,7 @@ public class BirthdayNotificationAgent extends NotificationAgent{
 
     @Override
     protected Notification createNotification() {
-        return new Notification("Aniversariante Chegou!", SimpleNotificationType.INFO);
+        return new Notification("Aniversariante chegou!", SimpleNotificationType.INFO);
     }
     
 }

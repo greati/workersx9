@@ -6,7 +6,11 @@
 package pso.secondphase.workersx9.processing;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +28,16 @@ import pso.secondphase.iox9.model.Entity;
 public class DBCollector implements InformationCollector{
 
     private BufferedReader reader;
+    
+    public DBCollector() {
+        try {
+            Path currentRelativePath = Paths.get("");
+            String path = currentRelativePath.toAbsolutePath().toString();
+            reader = new BufferedReader(new FileReader(path + "/src/main/resources/database.txt"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DBCollector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     @Override
     public void collect(Entity entity) {
@@ -43,6 +57,7 @@ public class DBCollector implements InformationCollector{
     }
     
     public String[] getByCPF(String cpf) throws IOException{
+        
         String line = reader.readLine();
         while(line != null){
             

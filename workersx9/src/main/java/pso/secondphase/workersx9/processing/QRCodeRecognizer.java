@@ -38,22 +38,26 @@ public class QRCodeRecognizer implements EntityRecognizer<Image>{
     @Override
     public String recognize(Image idt) {
         
-        BufferedImage bimage = new BufferedImage(idt.getWidth(null), idt.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+        if (idt != null) {
+        
+            BufferedImage bimage = new BufferedImage(idt.getWidth(null), idt.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 
-        // Draw the image on to the buffered image
-        Graphics2D bGr = bimage.createGraphics();
-        bGr.drawImage(idt, 0, 0, null);
-        bGr.dispose();
-        
-        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource((bimage))));
-        Result qrCodeResult = null;
-        try {
-            qrCodeResult = new MultiFormatReader().decode(binaryBitmap,(Map)HINT_MAP);
-        } catch (NotFoundException ex) {
-            Logger.getLogger(QRCodeRecognizer.class.getName()).log(Level.SEVERE, null, ex);
+            // Draw the image on to the buffered image
+            Graphics2D bGr = bimage.createGraphics();
+            bGr.drawImage(idt, 0, 0, null);
+            bGr.dispose();
+
+            BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource((bimage))));
+            Result qrCodeResult = null;
+            try {
+                qrCodeResult = new MultiFormatReader().decode(binaryBitmap,(Map)HINT_MAP);
+            } catch (NotFoundException ex) {
+                Logger.getLogger(QRCodeRecognizer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            return qrCodeResult.getText();
         }
-        
-        return qrCodeResult.getText();
+        return null;
     }
     
 }
