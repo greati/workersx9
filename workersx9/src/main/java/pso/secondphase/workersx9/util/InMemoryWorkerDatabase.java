@@ -14,7 +14,15 @@ public class InMemoryWorkerDatabase {
     private volatile List<String> outsideWorkers;
     private volatile List<String> insideWorkers;
 
-    public InMemoryWorkerDatabase() {
+    private static InMemoryWorkerDatabase instance;
+    
+    public static InMemoryWorkerDatabase getInstance() {
+        if(instance == null)
+            InMemoryWorkerDatabase.instance = new InMemoryWorkerDatabase();
+        return instance;
+    }
+    
+    private InMemoryWorkerDatabase() {
         outsideWorkers = new ArrayList<>();
         insideWorkers = new ArrayList<>();
         

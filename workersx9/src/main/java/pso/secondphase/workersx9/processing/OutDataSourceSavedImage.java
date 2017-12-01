@@ -6,6 +6,9 @@
 package pso.secondphase.workersx9.processing;
 
 import java.awt.Image;
+import pso.secondphase.iox9.business.capture.IdentityDataSource;
+import pso.secondphase.iox9.exception.FailedOpeningSourceException;
+import pso.secondphase.iox9.exception.InvalidDataReceivedException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,35 +20,37 @@ import pso.secondphase.iox9.exception.FailedOpeningSourceException;
 import pso.secondphase.iox9.exception.InvalidDataReceivedException;
 import pso.secondphase.workersx9.util.InMemoryWorkerDatabase;
 
+
 /**
  *
- * @author andre
+ * @author vitorgreati
  */
-public class InDataSourceSavedImage extends IdentityDataSource<Image> {
+public class OutDataSourceSavedImage extends IdentityDataSource<Image> {
 
-    private final InMemoryWorkerDatabase database;    
+    private final InMemoryWorkerDatabase database;
     
-    public InDataSourceSavedImage(String id){
+    public OutDataSourceSavedImage(String id){
         super(id);
         this.database = InMemoryWorkerDatabase.getInstance();
     }
+
     
     @Override
     protected Image _getData() throws InvalidDataReceivedException {
         BufferedImage img = null;
 
-        if(database.getOutsideWorkers().isEmpty()) return null;
+        if(database.getInsideWorkers().isEmpty()) return null;
 
-        int pos = (int)(Math.random() * database.getOutsideWorkers().size());
-        String imgString = database.getOutsideWorkers().get(pos);
+        int pos = (int)(Math.random() * database.getInsideWorkers().size());
+        String imgString = database.getInsideWorkers().get(pos);
         try {
-           img = ImageIO.read(new File(imgString));
-           database.getOutsideWorkers().remove(pos);
-           database.getInsideWorkers().add(imgString);
+            img = ImageIO.read(new File(imgString));
+            database.getInsideWorkers().remove(pos);
+            database.getOutsideWorkers().add(imgString);
         } catch (IOException ex) {
-           Logger.getLogger(InDataSourceSavedImage.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-        
+            Logger.getLogger(OutDataSourceSavedImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return img;    
     }
 
