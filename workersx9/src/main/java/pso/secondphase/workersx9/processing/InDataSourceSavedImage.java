@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import pso.secondphase.iox9.business.capture.IdentityDataSource;
+import pso.secondphase.iox9.configuration.ApplicationConfiguration;
 import pso.secondphase.iox9.exception.FailedOpeningSourceException;
 import pso.secondphase.iox9.exception.InvalidDataReceivedException;
 import pso.secondphase.workersx9.util.InMemoryWorkerDatabase;

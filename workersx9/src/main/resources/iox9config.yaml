@@ -14,6 +14,9 @@
 capacity: 30 
 almost_full: 25
 
+extra:
+    hora_chegada: 14
+
 # Database configuration
 database:
     url: "jdbc:postgresql://localhost:5432/workerx9db"
@@ -53,7 +56,10 @@ statictics_processors:
     -
         id: count_by_hours_in_day
         class: "pso.secondphase.iox9.business.statistics.CountByHoursInDayStatistics"
-    
+    -
+        id: late_workers
+        class: "pso.secondphase.workersx9.statistics.LateWorkersStatistics"
+        
 notification_agents:
     -
         id: birthday_notification
@@ -69,6 +75,8 @@ views:
         notifiable: true
         processors_of_interest:
             - entrance_camera
+        statistics_of_interest:
+            - count_by_hours_in_day
             
     -
         id: exit_panel

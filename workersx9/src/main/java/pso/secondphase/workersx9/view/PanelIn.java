@@ -5,13 +5,17 @@
  */
 package pso.secondphase.workersx9.view;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import pso.secondphase.iox9.business.notification.NotifierChainSingleton;
 import pso.secondphase.iox9.business.processing.Observer;
+import pso.secondphase.iox9.business.statistics.StatisticsChainSingleton;
 import pso.secondphase.iox9.model.Entity;
 import pso.secondphase.iox9.model.IORecord;
 import pso.secondphase.iox9.model.Notification;
 import pso.secondphase.workersx9.processing.WorkerInProcessor;
+import pso.secondphase.workersx9.statistics.LateWorkersStatistics;
 
 /**
  *
@@ -31,5 +35,8 @@ public class PanelIn extends Observer{
         System.out.println(n.getMessage());
     }
     
-    
+    public void update(LateWorkersStatistics observable, Object o){
+        List<Float> list = (ArrayList<Float>)o;
+        System.out.println("Atrasados/Não-atrasados/Não chegaram: " + list.get(0)*100+"%/"+list.get(1)+"%/"+list.get(2)+"%");
+    }
 }
