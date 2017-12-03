@@ -37,6 +37,6 @@ public class PanelIn extends Observer{
     
     public void update(LateWorkersStatistics observable, Object o){
         List<Float> list = (ArrayList<Float>)o;
-        System.out.println("Atrasados/Não-atrasados/Não chegaram: " + list.get(0)*100+"%/"+list.get(1)+"%/"+list.get(2)+"%");
+        System.out.println("Atrasados/Não-atrasados/Não chegaram: " + list.get(0)*100+"%/"+list.get(1)*100+"%/"+list.get(2)*100+"%");
     }
 }

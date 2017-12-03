@@ -25,6 +25,9 @@ public class JDBCIORecordWorkerDAO extends JDBCIORecordDAO{
                 if(latest != null && latest.getInstant().before(ior.getInstant())){
                     latest = ior;
                 }
+                if(latest == null){
+                    latest = ior;
+                }
             }
         }
         return latest;

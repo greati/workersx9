@@ -52,7 +52,7 @@ sources:
         sleep_time: 5000
         
 # Statistics processors registration
-statictics_processors:
+statistics_processors:
     -
         id: count_by_hours_in_day
         class: "pso.secondphase.iox9.business.statistics.CountByHoursInDayStatistics"
@@ -76,7 +76,7 @@ views:
         processors_of_interest:
             - entrance_camera
         statistics_of_interest:
-            - count_by_hours_in_day
+            - late_workers
             
     -
         id: exit_panel

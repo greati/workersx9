@@ -31,7 +31,6 @@ public class LateWorkersStatistics extends StatisticsProcessor{
 
     @Override
     public Object generateStatistics(IORecord ior) {
-        System.out.println("askfjakfhsdjf");
         int horaChegada = (int) ApplicationConfiguration.getInstance().getParameters().get("hora_chegada");
         
         JDBCIORecordWorkerDAO iodao = new JDBCIORecordWorkerDAO();
@@ -65,6 +64,7 @@ public class LateWorkersStatistics extends StatisticsProcessor{
                 freqNaoChegou++;
             }
         }
+        System.out.println("freqs: " + freqAtrasada + ", " + freqNaoAtrasada + ", " + freqNaoChegou);
         int total = freqAtrasada+freqNaoAtrasada+freqNaoChegou;
         List<Float> dados = new ArrayList<>();
         dados.add((float)freqAtrasada/total);
