@@ -16,7 +16,7 @@ import pso.secondphase.workersx9.processing.WorkerOutProcessor;
  *
  * @author andre
  */
-public class PanelOut extends Observer{
+public class WorkersPanelOut extends Observer{
     public void update(WorkerOutProcessor observable, Object o){
         Entity e = ((IORecord)o).getEntity();
         System.out.println("SAIU");

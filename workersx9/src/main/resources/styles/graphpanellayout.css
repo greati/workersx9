@@ -1,0 +1,44 @@
+.root{    
+    -fx-font-family: 'Josefin Sans';
+}
+
+.root-pane{
+    -fx-background-color: #303030;
+}
+
+.chart{
+    -fx-padding: 10px;
+    -fx-border-insets: 10px;
+    -fx-background-insets: 2px;
+    -fx-background-color: #181818;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke-width: 0;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #303030;
+    -fx-stroke-width: 1;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
+
+.axis-label {
+    -fx-text-fill: #FFF;
+}
+
+.titles-information{    
+    -fx-text-fill: rgb(149,117,205);
+    -fx-font-size: 18px;
+    -fx-alignment: CENTER;
+}
+
+.default-color0.chart-bar { 
+    -fx-bar-fill: #27ae60; 
+}

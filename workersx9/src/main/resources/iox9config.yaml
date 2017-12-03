@@ -71,7 +71,7 @@ notification_agents:
 views:
     -
         id: entrance_panel
-        class: "pso.secondphase.workersx9.view.PanelIn"
+        class: "pso.secondphase.workersx9.view.WorkersPanelIn"
         notifiable: true
         processors_of_interest:
             - entrance_camera
@@ -80,8 +80,9 @@ views:
             
     -
         id: exit_panel
-        class: "pso.secondphase.workersx9.view.PanelOut"
+        class: "pso.secondphase.workersx9.view.WorkersPanelOut"
         notifiable: false
         processors_of_interest:
             - exit_camera
-            
+
+start_class: "pso.secondphase.workersx9.view.RealTimePanel"
