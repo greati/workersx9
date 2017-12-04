@@ -9,7 +9,6 @@ import java.util.List;
 import pso.secondphase.iox9.dao.JDBCIORecordDAO;
 import pso.secondphase.iox9.model.Entity;
 import pso.secondphase.iox9.model.IORecord;
-import pso.secondphase.iox9.model.IORecordType;
 import pso.secondphase.iox9.model.SimpleIORecordType;
 
 /**

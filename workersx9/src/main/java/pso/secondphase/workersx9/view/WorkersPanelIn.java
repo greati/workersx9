@@ -8,6 +8,7 @@ package pso.secondphase.workersx9.view;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,9 +67,21 @@ public class WorkersPanelIn extends Observer{
                 System.out.println("ENTROU");
                 System.out.println("CPF: "+ e.getIdentifier());
                 cameraIn.setImage(new Image(getClass().getResource("/img/"+e.getIdentifier()+".png").toExternalForm()));
-                nomeIn.setText("Nome: " + e.getAttrs().get("nome").value);
-                LocalDate nascimento = LocalDate.ofEpochDay(((Date)e.getAttrs().get("data").value).getTime());
-                nascimentoIn.setText("Data nascimento: " + nascimento.getDayOfMonth() + "/" + nascimento.getMonthValue() + "/" + nascimento.getYear());
+                if(e.getAttrs().get("nome").value != null){
+                    nomeIn.setText("Nome: " + e.getAttrs().get("nome").value);
+                }
+                else{
+                    nomeIn.setText("Nome: ");
+                }
+                Date data = (Date)e.getAttrs().get("data_nascimento").value;
+                LocalDate nascimento = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                if(nascimento != null){
+                    nascimentoIn.setText("Data nascimento: " + nascimento.getDayOfMonth() + "/" + nascimento.getMonthValue() + "/" + nascimento.getYear());
+                }
+                else{
+                    nascimentoIn.setText("Data nascimento: ");
+                }
             }
         });
         

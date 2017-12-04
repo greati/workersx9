@@ -32,7 +32,8 @@ public class RealTimePanel extends Application implements StartableView{
         workerInPanel = (WorkersPanelIn) ApplicationConfiguration.getInstance().getViews().get("entrance_panel");
         workerInPanel.init();
         
-        //workerOutPanel = (PanelOut) ApplicationConfiguration.getInstance().getViews().get("exit_panel");
+        workerOutPanel = (WorkersPanelOut) ApplicationConfiguration.getInstance().getViews().get("exit_panel");
+        workerOutPanel.init();
         
         //graphsPanel = new ChartsPanel();
         //notificationPanel = new NotificationPanel();
@@ -77,7 +78,7 @@ public class RealTimePanel extends Application implements StartableView{
         workerInOut.setPrefSize(1010, 350);
         
         workerInOut.add(workerInPanel.getPanel(), 0, 0);
-        //vehicleInOut.add(vehicleOutPanel.getPanel(), 1, 0);
+        workerInOut.add(workerOutPanel.getPanel(), 1, 0);
         
         //Setting vehicleInOut postion
         rootPane.add(workerInOut, 0, 0);

@@ -31,7 +31,7 @@ model_factory_class: "pso.secondphase.iox9.model.GeneralModelFactory"
 # Collector configuration
 collector:
     class: "pso.secondphase.workersx9.processing.DBCollector"
-    sleep_time: 500
+    sleep_time: 100
 
 sources:
     - 
