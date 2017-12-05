@@ -42,9 +42,9 @@ public class DBCollector implements InformationCollector{
             Logger.getLogger(DBCollector.class.getName()).log(Level.SEVERE, null, ex);
         }
         Map<String, Attribute<?>> attrs = entity.getAttrs();
-        attrs.put("nome", new Attribute<String>(pessoa[1], "nome"));
+        attrs.put("nome", new Attribute<String>(pessoa[1], "nome", true));
         try {
-            attrs.put("data", new Attribute<Date>((new SimpleDateFormat("dd-MM-yyyy")).parse(pessoa[2]+"-"+pessoa[3]+"-"+pessoa[4]), "data"));
+            attrs.put("data_nascimento", new Attribute<Date>((new SimpleDateFormat("dd-MM-yyyy")).parse(pessoa[2]+"-"+pessoa[3]+"-"+pessoa[4]), "data_nascimento", true));
         } catch (ParseException ex) {
             Logger.getLogger(DBCollector.class.getName()).log(Level.SEVERE, null, ex);
         }

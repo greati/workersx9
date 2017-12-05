@@ -1,0 +1,58 @@
+.root{    
+    -fx-font-family: 'Josefin Sans';
+}
+
+.root-pane{
+    -fx-background-color: #303030;
+}
+
+.form-pane{
+    -fx-padding: 10px 10px 5px 10px;
+    -fx-border-insets: 10px 10px 5px 10px;
+    -fx-background-insets: 10px 10px 5px 10px;
+    -fx-background-color: #181818;
+}
+
+.result-pane{
+    -fx-padding: 7px 10px 10px 10px;
+    -fx-border-insets: 7px 10px 10px 10px;
+    -fx-background-insets: 7px 10px 10px 10px;
+    -fx-background-color: #181818;
+}
+
+.input-field{
+    -fx-padding: 9px 5px 0 20px;
+    -fx-border-insets: 9px 5px 0 5px;
+    -fx-background-insets: 9px 5px 0 5px;
+}
+
+.button-s{
+    -fx-background-color: #27ae60;
+    -fx-padding: 9px 5px 0 5px;
+    -fx-border-insets: 9px 5px 0 5px;
+    -fx-background-insets: 9px 5px 0 5px;
+    -fx-text-fill: rgb(255,255,255);
+}
+
+.button-c{
+    -fx-background-color: #8e44ad;  
+    -fx-padding: 9px 5px 0 5px;
+    -fx-border-insets: 9px 5px 0 5px;
+    -fx-background-insets: 9px 5px 0 5px;
+    -fx-text-fill: rgb(255,255,255);
+}
+
+.table{
+    -fx-padding: 10px;
+    -fx-border-insets: 10px;
+    -fx-background-insets: 10px;
+}
+
+.table-column {
+  -fx-alignment: CENTER;
+}
+
+.table-row-cell{
+    -fx-border-color: #181818;
+    -fx-table-cell-border-color: #181818;
+}
